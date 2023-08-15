@@ -119,7 +119,7 @@
         shareButton.addEventListener('click', function () {
             const jsonValue = jsonInput.value.trim();
             if (jsonValue) {
-                const shareURL = window.location.origin + '/?j=' + encodeURIComponent(jsonValue);
+                const shareURL = window.location.origin + window.location.pathname + '/?j=' + encodeURIComponent(jsonValue);
                 setTimeout(() => {
                     navigator.clipboard.writeText(shareURL);
                 }, 0);
