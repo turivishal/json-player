@@ -19,8 +19,11 @@ header {
   align-items: center;
 }
 
+.logo-text {
+  font-size: 30px;
+}
+
 .logo-icon {
-  font-size: 24px;
   margin-right: 5px;
 }
 
@@ -31,8 +34,17 @@ header {
 }
 
 .slogan-icon {
-  font-size: 24px;
-  margin-right: 5px;
+  margin-right: 10px;
+}
+
+.slogan-icon2 {
+  margin-right: 10px;
+  font-size: 27px;
+}
+
+.slogan-text {
+  font-size: 25px;
+  font-style: oblique;
 }
 
 .buttons {
