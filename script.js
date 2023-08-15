@@ -78,13 +78,17 @@
             `, 'success');
         });
         shareButton.addEventListener('click', function () {
-            const jsonValue = jsonInput.value.trim();
+            const jsonValue = encodeURIComponent(jsonInput.value.trim());
             if (jsonValue) {
-                const shareURL = window.location.origin + window.location.pathname + '?j=' + encodeURIComponent(jsonValue);
-                setTimeout(() => {
-                    navigator.clipboard.writeText(shareURL);
-                }, 0);
-                prompt('Copied to clipboard ', shareURL);
+                if (jsonValue.length < 2048) {
+                    const shareURL = window.location.origin + window.location.pathname + '?j=' + jsonValue;
+                    setTimeout(() => {
+                        navigator.clipboard.writeText(shareURL);
+                    }, 0);
+                    prompt('Copied to clipboard ', shareURL);
+                } else {
+                    displayModalMessage("URI Too Long", "error");
+                }
             }
         });
         function formatJson() {
@@ -174,9 +178,13 @@
             closeModal();
         });
         const sharedJSON = urlParams.get('j');
-        if (sharedJSON) {
-            jsonInput.value = decodeURIComponent(sharedJSON);
-            formatJson();
+        try {
+            if (sharedJSON) {
+                jsonInput.value = decodeURIComponent(sharedJSON);
+                formatJson();
+            }
+        } catch (e) {
+            displayModalMessage("Something is wong with URL!", "error");
         }
     });
 })();
