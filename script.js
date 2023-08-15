@@ -23,50 +23,7 @@
             });
         });
         formatButton.addEventListener('click', function () {
-            if (jsonInput.value) {
-                let b = jsonInput.value.replace(/\n/g, " ").replace(/\r/g, " "),
-                    e = [],
-                    p = 0,
-                    obj = false,
-                    i = 0,
-                    bLength = b.length;
-                for (; i < bLength; i++) {
-                    let type = b.charAt(i);
-                    if (obj && type === obj) {
-                        if ("\\" !== b.charAt(i - 1)) {
-                            obj = false;
-                        }
-                    } else {
-                        if (obj || '"' !== type && "'" !== type) {
-                            if (obj || " " !== type && "\t" !== type) {
-                                if (obj || ":" !== type) {
-                                    if (obj || "," !== type) {
-                                        if (obj || "[" !== type && "{" !== type) {
-                                            if (!(obj || "]" !== type && "}" !== type)) {
-                                                p--;
-                                                type = "\n" + ' '.repeat(2 * p) + type;
-                                            }
-                                        } else {
-                                            p++;
-                                            type = type + ("\n" + ' '.repeat(2 * p));
-                                        }
-                                    } else {
-                                        type = type + ("\n" + ' '.repeat(2 * p));
-                                    }
-                                } else {
-                                    type = type + " ";
-                                }
-                            } else {
-                                type = "";
-                            }
-                        } else {
-                            obj = type;
-                        }
-                    }
-                    e.push(type);
-                }
-                jsonInput.value = e.join("");
-            }
+            formatJson();
         });
         copyButton.addEventListener('click', function () {
             if (jsonInput.value) {
@@ -126,6 +83,52 @@
                 prompt('Copied to clipboard ', shareURL);
             }
         });
+        function formatJson() {
+            if (jsonInput.value) {
+                let b = jsonInput.value.replace(/\n/g, " ").replace(/\r/g, " "),
+                    e = [],
+                    p = 0,
+                    obj = false,
+                    i = 0,
+                    bLength = b.length;
+                for (; i < bLength; i++) {
+                    let type = b.charAt(i);
+                    if (obj && type === obj) {
+                        if ("\\" !== b.charAt(i - 1)) {
+                            obj = false;
+                        }
+                    } else {
+                        if (obj || '"' !== type && "'" !== type) {
+                            if (obj || " " !== type && "\t" !== type) {
+                                if (obj || ":" !== type) {
+                                    if (obj || "," !== type) {
+                                        if (obj || "[" !== type && "{" !== type) {
+                                            if (!(obj || "]" !== type && "}" !== type)) {
+                                                p--;
+                                                type = "\n" + ' '.repeat(2 * p) + type;
+                                            }
+                                        } else {
+                                            p++;
+                                            type = type + ("\n" + ' '.repeat(2 * p));
+                                        }
+                                    } else {
+                                        type = type + ("\n" + ' '.repeat(2 * p));
+                                    }
+                                } else {
+                                    type = type + " ";
+                                }
+                            } else {
+                                type = "";
+                            }
+                        } else {
+                            obj = type;
+                        }
+                    }
+                    e.push(type);
+                }
+                jsonInput.value = e.join("");
+            }
+        }
         function JsonInputChange() {
             if (jsonInput.value) {
                 try {
@@ -168,6 +171,7 @@
         const sharedJSON = urlParams.get('j');
         if (sharedJSON) {
             jsonInput.value = decodeURIComponent(sharedJSON);
+            formatJson();
             jsonInput.focus();
         }
     });
