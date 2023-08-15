@@ -43,8 +43,8 @@ header {
 }
 
 .slogan-text {
-  font-size: 25px;
-  font-style: oblique;
+  font-size: 20px;
+  /* font-style: oblique; */
 }
 
 .buttons {
