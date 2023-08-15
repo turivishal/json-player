@@ -19,7 +19,10 @@
         });
         pasteButton.addEventListener('click', function () {
             navigator.clipboard.readText().then(text => {
-                if (text) jsonInput.value = text;
+                if (text) {
+                    jsonInput.value = text;
+                    formatJson();
+                }
             });
         });
         formatButton.addEventListener('click', function () {
@@ -42,6 +45,7 @@
                 jsonInput.value = '';
                 jsonInput.classList.remove('error');
                 jsonInput.classList.remove('success');
+                jsonInput.focus();
             }
         });
         aboutButton.addEventListener('click', function () {
@@ -84,6 +88,7 @@
             }
         });
         function formatJson() {
+            jsonInput.focus();
             if (jsonInput.value) {
                 let b = jsonInput.value.replace(/\n/g, " ").replace(/\r/g, " "),
                     e = [],
@@ -172,7 +177,6 @@
         if (sharedJSON) {
             jsonInput.value = decodeURIComponent(sharedJSON);
             formatJson();
-            jsonInput.focus();
         }
     });
 })();
