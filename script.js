@@ -8,21 +8,14 @@
             aboutButton = document.getElementById('about-button'),
             dynamicModal = document.getElementById('dynamic-modal'),
             dynamicModalMessage = document.getElementById('dynamic-modal-message'),
-            closeDynamicModal = document.getElementById('close-dynamic-modal');
+            closeDynamicModal = document.getElementById('close-dynamic-modal'),
+            shareButton = document.getElementById('shareButton'),
+            urlParams = new URLSearchParams(window.location.search);
         jsonInput.addEventListener('input', function () {
-            if (jsonInput.value) {
-                try {
-                    JSON.parse(jsonInput.value);
-                    jsonInput.classList.remove('error');
-                    jsonInput.classList.add('success');
-                } catch (error) {
-                    jsonInput.classList.remove('success');
-                    jsonInput.classList.add('error');
-                }
-            } else {
-                jsonInput.classList.remove('success');
-                jsonInput.classList.remove('error');
-            }
+            JsonInputChange();
+        });
+        jsonInput.addEventListener('focus', function () {
+            JsonInputChange();
         });
         pasteButton.addEventListener('click', function () {
             navigator.clipboard.readText().then(text => {
@@ -123,6 +116,31 @@
                 </div>
             `, 'success');
         });
+        shareButton.addEventListener('click', function () {
+            const jsonValue = jsonInput.value.trim();
+            if (jsonValue) {
+                const shareURL = window.location.origin + '/?j=' + encodeURIComponent(jsonValue);
+                setTimeout(() => {
+                    navigator.clipboard.writeText(shareURL);
+                }, 0);
+                prompt('Copied to clipboard ', shareURL);
+            }
+        });
+        function JsonInputChange() {
+            if (jsonInput.value) {
+                try {
+                    JSON.parse(jsonInput.value);
+                    jsonInput.classList.remove('error');
+                    jsonInput.classList.add('success');
+                } catch (error) {
+                    jsonInput.classList.remove('success');
+                    jsonInput.classList.add('error');
+                }
+            } else {
+                jsonInput.classList.remove('success');
+                jsonInput.classList.remove('error');
+            }
+        }
         function displayModalMessage(message, type) {
             dynamicModalMessage.innerHTML = message;
             if (type === 'error') {
@@ -147,5 +165,10 @@
         closeDynamicModal.addEventListener('click', function () {
             closeModal();
         });
+        const sharedJSON = urlParams.get('j');
+        if (sharedJSON) {
+            jsonInput.value = decodeURIComponent(sharedJSON);
+            jsonInput.focus();
+        }
     });
 })();
