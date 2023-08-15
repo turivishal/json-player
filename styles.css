@@ -57,13 +57,13 @@ button {
   padding: 10px 15px;
   margin: 0 5px;
   border: none;
-  background-color: #007bff;
+  background-color: #004BBD;
   color: white;
   cursor: pointer;
 }
 
 #clear-button {
-  background-color: #ff5722;
+  background-color: #992800;
 }
 
 #json-input {
@@ -90,9 +90,9 @@ footer {
 }
 
 #about-button {
-  background-color: #4caf50;
+  background-color: #9FD6A1;
   border: none;
-  color: white;
+  color: black;
   padding: 5px 10px;
   cursor: pointer;
 }
