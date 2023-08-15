@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- # -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- # -->
+    <meta property="og:title" content="JSON Player, Formatter & Validator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="f/android-icon-144x144.png" />
+    <meta property="og:site_name" content="JSON Player, Formatter & Validator" />
+    <meta property="og:description" content="JSON Player, Formatter & Validator | A website to help developers play with JSON data." />
+    <!-- # -->
+    <meta itemprop="name" content="JSON Player, Formatter & Validator">
+    <meta itemprop="description" content="JSON Player, Formatter & Validator | A website to help developers play with JSON data.">
+    <meta name="description" content="JSON Player, Formatter & Validator | A website to help developers play with JSON data.">
+    <meta name="keywords" content="JSON, JSON Player, Formatter & Validator, JSON Playground, Developer tools, Prettify JSON">
+    <!-- <meta name="google-site-verification" content="" /> -->
+    <!-- # -->
+    <title>JSON Player, Formatter & Validator</title>
+    <!-- # -->
+    <link rel="apple-touch-icon" sizes="57x57" href="f/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="f/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="f/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="f/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="f/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="f/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="f/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="f/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="f/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="f/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="f/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="f/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="f/favicon-16x16.png">
+    <link rel="manifest" href="f/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="f/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- # -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '');
+    </script> -->
+    <!-- # -->
+    <noscript></noscript>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- You can replace the icon or character here -->
+            <span class="logo-icon">🔧</span>
+            <span class="logo-text">JSON Player</span>
+        </div>
+        <div class="slogan">
+            <!-- You can replace the icon or character here -->
+            <span class="slogan-icon">👁️</span>
+            <span class="slogan-text">Prettify your vision</span>
+        </div>
+    </header>
+    <main>
+        <div class="buttons">
+            <button id="paste-button">
+                <span class="button-icon">📋</span>
+                Paste
+            </button>
+            <button id="format-button">
+                <span class="button-icon">✨</span>
+                Format
+            </button>
+            <button id="copy-button">
+                <span class="button-icon">📄</span>
+                Copy
+            </button>
+            <button id="clear-button">
+                Clear
+            </button>
+        </div>
+        <textarea id="json-input" class="json-textarea" placeholder="Enter JSON here"></textarea>
+    </main>
+    <footer>
+        <div class="footer-left">
+            &copy; 2023 JSON Player
+        </div>
+        <div class="footer-right">
+            <button id="about-button">About</button>
+        </div>
+    </footer>
+    <div class="modal" id="dynamic-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-dynamic-modal">&times;</span>
+            <div id="dynamic-modal-message"></div>
+        </div>
+    </div>
+    <!-- # SUPPORT FOR IE-->
+    <script defer src="polyfill.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
