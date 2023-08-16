@@ -74,8 +74,9 @@
             `, 'success');
         });
         shareButton.addEventListener('click', function () {
-            const jsonValue = encodeURIComponent(btoa(JSON.stringify(jsonInput.value.trim())));
+            let jsonValue = jsonInput.value.trim();
             if (jsonValue) {
+                jsonValue = encodeURIComponent(btoa(JSON.stringify(jsonValue)));
                 // 2048
                 if (jsonValue.length) {
                     const shareURL = window.location.origin + window.location.pathname + '?j=' + jsonValue;
