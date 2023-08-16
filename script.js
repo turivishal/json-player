@@ -74,9 +74,10 @@
             `, 'success');
         });
         shareButton.addEventListener('click', function () {
-            const jsonValue = encodeURIComponent(jsonInput.value.trim());
+            const jsonValue = encodeURIComponent(btoa(JSON.stringify(jsonInput.value.trim())));
             if (jsonValue) {
-                if (jsonValue.length < 2048) {
+                // 2048
+                if (jsonValue.length) {
                     const shareURL = window.location.origin + window.location.pathname + '?j=' + jsonValue;
                     setTimeout(() => {
                         navigator.clipboard.writeText(shareURL);
@@ -174,7 +175,7 @@
         const sharedJSON = urlParams.get('j');
         try {
             if (sharedJSON) {
-                jsonInput.value = decodeURIComponent(sharedJSON);
+                jsonInput.value = JSON.parse(atob(decodeURIComponent(sharedJSON)));
                 formatJson();
             }
         } catch (e) {
@@ -183,6 +184,6 @@
         setInterval(() => {
             s1.classList.toggle("slogan-anim");
             s2.classList.toggle("slogan-anim");
-        }, 10000);
+        }, 10000);         
     });
 })();
