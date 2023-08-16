@@ -9,14 +9,12 @@
             dynamicModal = document.getElementById('dynamic-modal'),
             dynamicModalMessage = document.getElementById('dynamic-modal-message'),
             closeDynamicModal = document.getElementById('close-dynamic-modal'),
-            shareButton = document.getElementById('shareButton'),
+            shareButton = document.getElementById('share-button'),
+            s1 = document.getElementById("si1"),
+            s2 = document.getElementById("si2"),
             urlParams = new URLSearchParams(window.location.search);
-        jsonInput.addEventListener('input', function () {
-            JsonInputChange();
-        });
-        jsonInput.addEventListener('focus', function () {
-            JsonInputChange();
-        });
+        jsonInput.addEventListener('input', JsonInputChange);
+        jsonInput.addEventListener('focus', JsonInputChange);
         pasteButton.addEventListener('click', function () {
             navigator.clipboard.readText().then(text => {
                 if (text) {
@@ -25,9 +23,7 @@
                 }
             });
         });
-        formatButton.addEventListener('click', function () {
-            formatJson();
-        });
+        formatButton.addEventListener('click', formatJson);
         copyButton.addEventListener('click', function () {
             if (jsonInput.value) {
                 try {
@@ -174,9 +170,7 @@
             dynamicModalMessage.classList.remove('modal-error', 'modal-success');
             document.body.classList.remove('modal-open');
         }
-        closeDynamicModal.addEventListener('click', function () {
-            closeModal();
-        });
+        closeDynamicModal.addEventListener('click', closeModal);
         const sharedJSON = urlParams.get('j');
         try {
             if (sharedJSON) {
@@ -186,5 +180,9 @@
         } catch (e) {
             displayModalMessage("Something is wong with URL!", "error");
         }
+        setInterval(() => {
+            s1.classList.toggle("slogan-anim");
+            s2.classList.toggle("slogan-anim");
+        }, 10000);
     });
 })();

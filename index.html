@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- # -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,12 +12,16 @@
     <meta property="og:url" content="https://turivishal.github.io/json-player/" />
     <meta property="og:image" content="https://turivishal.github.io/json-player/f/favicon-96x96.png" />
     <meta property="og:site_name" content="JSON Player, Formatter & Validator" />
-    <meta property="og:description" content="JSON Player, Formatter & Validator | A website to help developers play with JSON data." />
+    <meta property="og:description"
+        content="JSON Player, Formatter & Validator | A website to help developers play with JSON data." />
     <!-- # -->
     <meta itemprop="name" content="JSON Player, Formatter & Validator">
-    <meta itemprop="description" content="JSON Player, Formatter & Validator | A website to help developers play with JSON data.">
-    <meta name="description" content="JSON Player, Formatter & Validator | A website to help developers play with JSON data.">
-    <meta name="keywords" content="JSON, JSON Player, Formatter & Validator, JSON Playground, Developer tools, Prettify JSON">
+    <meta itemprop="description"
+        content="JSON Player, Formatter & Validator | A website to help developers play with JSON data.">
+    <meta name="description"
+        content="JSON Player, Formatter & Validator | A website to help developers play with JSON data.">
+    <meta name="keywords"
+        content="JSON, JSON Player, Formatter & Validator, JSON Playground, Developer tools, Prettify JSON">
     <meta name="google-site-verification" content="QFpX8FvoJN5Ic5Ed7LQfy6yssSTow0DI_Avnsey4Td8" />
     <!-- # -->
     <title>JSON Player, Formatter & Validator</title>
@@ -31,7 +36,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="f/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="f/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="f/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="f/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="f/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="f/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="f/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="f/favicon-16x16.png">
@@ -45,13 +50,14 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0EGC7K8B8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-Q0EGC7K8B8');
     </script>
     <!-- # -->
     <noscript></noscript>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -59,8 +65,8 @@
             <span class="logo-text">JSON Player</span>
         </div>
         <div class="slogan">
-            <span class="slogan-icon2">👁️</span>
-            <span class="slogan-icon">👁️</span>
+            <span class="slogan-icon slogan-anim" id="si1">👁️</span>
+            <span class="slogan-icon" id="si2">👁️</span>
             <span class="slogan-text">Prettify your vision</span>
         </div>
     </header>
@@ -74,13 +80,15 @@
                 <span class="button-icon">✨</span>
                 Format
             </button>
-            <button id="copy-button">
-                <span class="button-icon">📄</span>
-                Copy
-            </button>
-            <button id="shareButton"><span class="button-icon">📤</span> Share</button>
             <button id="clear-button">
+                <span class="button-icon">🔄</span>
                 Clear
+            </button>
+            <button id="share-button" title="Share">
+                <span class="button-icon">📤</span>
+            </button>
+            <button id="copy-button" class="copy-button-top" title="Copy">
+                <span class="button-icon">📄</span>
             </button>
         </div>
         <textarea id="json-input" class="json-textarea" placeholder="Enter JSON here"></textarea>
@@ -101,6 +109,7 @@
     </div>
     <!-- # SUPPORT FOR IE-->
     <script defer src="polyfill.min.js"></script>
-    <script src="script.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
